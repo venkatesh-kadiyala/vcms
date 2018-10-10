@@ -2,24 +2,6 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "An example template with an IAM role for a Lambda state machine.",
   "Resources": {
-      "LambdaExecutionRole": {
-          "Type": "AWS::IAM::Role",
-          "DeletionPolicy" : "Delete",
-          "Properties": {
-              "AssumeRolePolicyDocument": {
-                  "Version": "2012-10-17",
-                  "Statement": [
-                      {
-                          "Effect": "Allow",
-                          "Principal": {
-                              "Service": "lambda.amazonaws.com"
-                          },
-                          "Action": "sts:AssumeRole"
-                      }
-                  ]
-              }
-          }
-      },
       "MyLambdaFunction": {
           "Type": "AWS::Lambda::Function",
           "DeletionPolicy" : "Delete",
@@ -27,7 +9,7 @@
               "Handler": "index.handler",
               "Role": {
                   "Fn::GetAtt": [
-                      "LambdaExecutionRole",
+                      "lambda_execution_role",
                       "Arn"
                   ]
               },
