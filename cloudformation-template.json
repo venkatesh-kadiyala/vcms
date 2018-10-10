@@ -7,12 +7,7 @@
           "DeletionPolicy" : "Delete",
           "Properties": {
               "Handler": "index.handler",
-              "Role": {
-                  "Fn::GetAtt": [
-                      "lambda_execution_role",
-                      "Arn"
-                  ]
-              },
+              "Role": "arn:aws:iam::430241707116:role/lambda_execution_role",
               "Code": {
                   "ZipFile": "exports.handler = (event, context, callback) => {\n    callback(null, \"Hello World!\");\n};\n"
               },
