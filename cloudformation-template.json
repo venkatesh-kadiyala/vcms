@@ -14,6 +14,19 @@
               "Runtime": "nodejs8.10",
               "Timeout": "25"
           }
-      }
+      },
+      "MyLambdaFunction1": {
+        "Type": "AWS::Lambda::Function",
+        "DeletionPolicy" : "Delete",
+        "Properties": {
+            "Handler": "index.handler",
+            "Role": "arn:aws:iam::430241707116:role/lambda_execution_role",
+            "Code": {
+                "ZipFile": "exports.handler = (event, context, callback) => {\n    callback(null, \"Welcome to VCMS!\");\n};\n"
+            },
+            "Runtime": "nodejs8.10",
+            "Timeout": "25"
+        }
+    }
   }
 }
